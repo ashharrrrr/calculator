@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+*{
+    font-family: 'Orbitron', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+body{
+    background: url(/images/background-g368662948_1920.jpg);
+}
+
+h1{
+    height: 15vh;
+    padding: 1rem 0 0 5rem;
+    font-size: 96px;
+    font-weight: 900;
+    color: #d0cbc0;
+}
+
+.hero{
+    min-width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.calculator{
+    background: #343a40;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 2rem;
+    align-items: center;
+    width: 576px;
+    min-height: 70vh;
+}
+
+p{
+    background: #495057;
+    min-width: 5rem;
+    min-height: 3.5rem;
+    text-align: right;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    padding-right: 5px;
+    padding-top: 15px;
+}
+
+.text-content{
+    margin: 1rem 0;
+    min-width: 90%;
+    min-height: 50%;
+}
+
+.buttons{
+    min-height: 10rem;
+    min-width: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.function-buttons{
+    min-width: 100%;
+    min-height: 20%;
+    align-self: flex-start;
+    padding-left: 1.8rem;
+}
+
+.function{
+    font-size: 30px;
+    padding: 5px 10px;
+    background: #212529;
+    font-weight: 400;
+    color: #fff;
+    border: 1px solid #212529;
+}
+
+.operation-buttons{
+    display: flex;
+}
+
+.digits{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 1.2rem;
+}
+
+.btn{
+    padding: 15px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.digit{
+    width: 120px;
+    margin: 10px;
+    background: #343a40;
+    color: #fff;
+    border: none;
+}
+
+.digit:hover{
+    box-shadow: 0 0 0 1px #212529;
+}
+
+.digit:active{
+    background-color: #212529;
+}
+
+#equals-btn{
+    width: 120px;
+    height: 60px;
+    background-color: rgb(255, 102, 0);
+    border: 1px solid rgb(255, 102, 0); 
+}
+
+.operators{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    gap: 20px;
+    padding-right: 1.4rem;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.operator{
+    width: 5.8rem;
+    background-color: #212529;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 400;
+    border: none;
+}
+
+.operator:active{
+    background-color: #212529da;
+}
+
+footer{
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    
+}
+
+

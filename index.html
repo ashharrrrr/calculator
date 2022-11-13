@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/d1524e1120.js"
+      crossorigin="anonymous"></script>
+    <title>Calculator</title>
+  </head>
+  <body>
+    <header>
+      <h1>Calculator</h1>
+    </header>
+    <section class="hero">
+      <div class="calculator">
+        <div class="text-content">
+          <p class="first-value"></p>
+          <p class="output-operator"></p>
+          <p class="second-value"></p>
+          <p class="output"></p>
+        </div>
+        <div class="buttons">
+          <div class="function-buttons">
+            <button class="function">clear</button>
+          </div>
+          <div class="operation-buttons">
+            <div class="digits">
+              <button class="digit btn digit-btn" data-value="1">1</button>
+              <button class="digit btn digit-btn" data-value="2">2</button>
+              <button class="digit btn digit-btn" data-value="3">3</button>
+              <button class="digit btn digit-btn" data-value="4">4</button>
+              <button class="digit btn digit-btn" data-value="5">5</button>
+              <button class="digit btn digit-btn" data-value="6">6</button>
+              <button class="digit btn digit-btn" data-value="7">7</button>
+              <button class="digit btn digit-btn" data-value="8">8</button>
+              <button class="digit btn digit-btn" data-value="9">9</button>
+              <button class="digit btn digit-btn" data-value="0">0</button>
+              <button class="digit btn digit-btn period" data-value=".">.</button>
+              <button class="operator btn operation-btn digit" id="equals-btn" data-equals>=</button>
+            </div>
+            <div class="operators">
+              <button class="operator btn operation-btn" data-operator="+">+</button>
+              <button class="operator btn operation-btn" data-operator="-">-</button>
+              <button class="operator btn operation-btn" data-operator="*">*</button>
+              <button class="operator btn operation-btn" data-operator="/">/</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="credits">
+        Made by
+        <i class="fa-brands fa-github"></i>
+        <a href="https://github.com/ashharrrrr" class="github">Ashhar</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
