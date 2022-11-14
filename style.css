@@ -16,7 +16,7 @@ a{
     color: #fff;
 }
 body{
-    background: url(/images/background-g368662948_1920.jpg);
+    background: url('./images/background-g368662948_1920.jpg');
 }
 
 h1{
