@@ -7,16 +7,28 @@ const outputSecondValue = document.querySelector(".second-value");
 const outputDisplay = document.querySelector(".output");
 const clearButton = document.querySelector(".function");
 const periodButton = document.querySelector(".period");
+const backspace = document.querySelector('.backspace');
 let firstNumber = 0;
 let selectedOperator;
 let operatorFunction = true;
 let secondNumber;
 let result;
 
+
+
 digits.forEach((digit) => {
   digit.addEventListener("click", (e) => takeValues(e));
   digit.removeEventListener("click", (e) => takeValues(e));
 });
+
+backspace.addEventListener('click', () => {
+  outputDisplay.textContent = outputDisplay.textContent.slice(0, outputDisplay.textContent.length - 1);
+  if(operatorFunction) firstNumber = +outputDisplay.textContent;
+  else{
+    secondNumber = +outputDisplay.textContent;
+  }
+  console.log('working')
+})
 
 
 operators.forEach((operator) => {
