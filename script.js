@@ -14,27 +14,40 @@ let operatorFunction = true;
 let secondNumber;
 let result;
 
+const numberArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+const operatorsArray = ['+', '-', '*', '/'];
 
-
-digits.forEach((digit) => {
-  digit.addEventListener("click", (e) => takeValues(e));
-  digit.removeEventListener("click", (e) => takeValues(e));
-});
-
-backspace.addEventListener('click', () => {
-  outputDisplay.textContent = outputDisplay.textContent.slice(0, outputDisplay.textContent.length - 1);
-  if(operatorFunction) firstNumber = +outputDisplay.textContent;
-  else{
-    secondNumber = +outputDisplay.textContent;
+document.addEventListener('keydown', (e) => {
+  if(numberArray.includes(+e.key)){
+    if (operatorFunction) {
+      if(outputDisplay.textContent.length >= 24) return;
+      outputDisplay.textContent += e.key;
+      firstNumber = +outputDisplay.textContent;
+      if(outputDisplay.textContent.includes('.')){
+          periodButton.setAttribute('disabled', '');
+      }
+  
+      console.log(firstNumber);
+    } else {
+      periodButton.removeAttribute('disabled');
+      if(outputDisplay.textContent.length >= 24) return;
+  
+      if (outputDisplay.textContent === selectedOperator) {
+        outputDisplay.textContent = "";
+        outputOperator.textContent = firstNumber;
+        outputSecondValue.textContent = selectedOperator;
+      }
+      outputDisplay.textContent += e.key;
+      secondNumber = +outputDisplay.textContent;
+      outputOperator.textContent = firstNumber;
+      outputSecondValue.textContent = selectedOperator;
+      if(outputDisplay.textContent.includes('.')){
+          periodButton.setAttribute('disabled', '');
+      }
+    }
   }
-  console.log('working')
-})
-
-
-operators.forEach((operator) => {
-  if (firstNumber === null || firstNumber === undefined) return;
-  operator.addEventListener("click", (e) => {
-    if(firstNumber === 0 && (e.target.dataset.operator === '*' || e.target.dataset.operator === '/')){
+  else if(operatorsArray.includes(e.key)){
+    if(firstNumber === 0 && (e.key === '*' || e.key === '/')){
         console.log(firstNumber);
         return alert("Enter a value first!")
     }
@@ -50,17 +63,58 @@ operators.forEach((operator) => {
       outputFirstValue.textContent = "";
       outputOperator.textContent = "";
     }
-    outputDisplay.textContent = e.target.textContent;
+    outputDisplay.textContent = e.key;
     operatorFunction = false;
     if(firstNumber === 0) operatorFunction = true;
     selectedOperator = outputDisplay.textContent;
     outputSecondValue.textContent = firstNumber;
+  }
+
+  else if(e.key === 'Enter'){
+    equalsKey();
+  }
+
+  else if(e.key === 'Backspace'){
+    backspaceKey();
+  }
+})
+
+digits.forEach((digit) => {
+  digit.addEventListener("click", (e) => takeValues(e));
+  digit.removeEventListener("click", (e) => takeValues(e));
+});
+
+backspace.addEventListener('click', () => {
+  backspaceKey();
+})
+
+
+operators.forEach((operator) => {
+  if (firstNumber === null || firstNumber === undefined) return;
+  operator.addEventListener("click", (e) => {
+    operationKey(e);
   });
 });
 
 clearButton.addEventListener("click", () => {
   clear();
 });
+
+equalsOperator.addEventListener("click", () => {
+  equalsKey();
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 function takeValues(e) {
   if (operatorFunction) {
@@ -91,14 +145,6 @@ function takeValues(e) {
   }
 }
 
-equalsOperator.addEventListener("click", () => {
-  result = operate(firstNumber, selectedOperator.trim(), secondNumber);
-
-  outputFirstValue.textContent = firstNumber;
-  outputOperator.textContent = selectedOperator;
-  outputSecondValue.textContent = secondNumber;
-  outputDisplay.textContent = result;
-});
 
 function clear() {
   firstNumber = 0;
@@ -142,4 +188,46 @@ function operate(num1, operator, num2) {
   }
 
   return result;
+}
+
+function backspaceKey(){
+    outputDisplay.textContent = outputDisplay.textContent.slice(0, outputDisplay.textContent.length - 1);
+  if(operatorFunction) firstNumber = +outputDisplay.textContent;
+  else{
+    secondNumber = +outputDisplay.textContent;
+  }
+  console.log('working')
+}
+
+function operationKey(e){
+  if(firstNumber === 0 && (e.target.dataset.operator === '*' || e.target.dataset.operator === '/')){
+        console.log(firstNumber);
+        return alert("Enter a value first!")
+    }
+    if (
+      selectedOperator === "+" ||
+      selectedOperator === "-" ||
+      selectedOperator === "*" ||
+      selectedOperator === "/"
+    ) {
+      result = operate(firstNumber, selectedOperator, secondNumber);
+      firstNumber = result;
+      outputSecondValue.textContent = result;
+      outputFirstValue.textContent = "";
+      outputOperator.textContent = "";
+    }
+    outputDisplay.textContent = e.target.textContent;
+    operatorFunction = false;
+    if(firstNumber === 0) operatorFunction = true;
+    selectedOperator = outputDisplay.textContent;
+    outputSecondValue.textContent = firstNumber;
+}
+
+function equalsKey(){
+  result = operate(firstNumber, selectedOperator.trim(), secondNumber);
+
+  outputFirstValue.textContent = firstNumber;
+  outputOperator.textContent = selectedOperator;
+  outputSecondValue.textContent = secondNumber;
+  outputDisplay.textContent = result;
 }
